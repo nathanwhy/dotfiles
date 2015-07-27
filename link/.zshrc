@@ -10,7 +10,6 @@ export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/opt/local/bin:/opt/local/sbin
 export PATH=$PATH:/usr/local/mysql/bin
 export PATH=$DOTFILES/bin:$PATH
-export PATH="/usr/local/heroku/bin:$PATH"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # Path to your oh-my-zsh configuration.
@@ -58,7 +57,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(atom git mosh brew gem redis-cli rails rake rbenv pip pyenv docker pod osx vagrant npm)
+plugins=(atom git brew gem rails rake rbenv pip pyenv docker pod osx vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
