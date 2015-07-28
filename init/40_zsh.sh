@@ -1,8 +1,8 @@
 # Exit if, for some reason, ZSH is not installed.
 [[ ! "$(type -P zsh)" ]] && e_error "ZSH failed to install." && return 1
 
-if [[ ! -d $HOME/.oh-my-zsh ]]; then
-  git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+if [[ ! -d $HOME/.zprezto ]]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git $HOME/.zprezto
 fi
 
 if ! grep -q "/usr/local/bin/zsh" "/etc/shells"; then
