@@ -11,7 +11,6 @@ __[dotfiles][dotfiles]__ - A single command to "bootstrap" a new system to pull 
 When [dotfiles][dotfiles] is run for the first time, it does a few things:
 
 1. This repo is cloned into your user directory, under `~/.dotfiles`.
-1. Files in `/copy` are copied into `~/`. ([read more](#the-copy-step))
 1. Files in `/link` are symlinked into `~/`. ([read more](#the-link-step))
 1. You are prompted to choose scripts in `/init` to be executed. The installer attempts to only select relevant scripts, based on the detected OS and the script filename.
 1. Your chosen init scripts are executed (in alphanumeric order, hence the funky names). ([read more](#the-init-step))
@@ -25,10 +24,6 @@ On subsequent runs, step 1 just updates the already-existing repo, and step 4 re
 * The `/caches` directory contains cached files, used by some scripts or functions.
 * The `/conf` directory just exists. If a config file doesn't **need** to go in `~/`, reference it from the `/conf` directory.
 * The `/source` directory contains files that are sourced whenever a new shell is opened (in alphanumeric order, hence the funky names).
-* The `/test` directory contains unit tests for especially complicated bash functions.
-
-### The "copy" step
-Any file in the `/copy` subdirectory will be copied into `~/`. Any file that _needs_ to be modified with personal information (like [copy/.gitconfig](copy/.gitconfig) which contains an email address and private key) should be _copied_ into `~/`. Because the file you'll be editing is no longer in `~/.dotfiles`, it's less likely to be accidentally committed into your public dotfiles repo.
 
 ### The "link" step
 Any file in the `/link` subdirectory gets symlinked into `~/` with `ln -s`. Edit one or the other, and you change the file in both places. Don't link files containing sensitive data, or you might accidentally commit that data! If you're linking a directory that might contain sensitive data (like `~/.ssh`) add the sensitive files to your [.gitignore](.gitignore) file!
@@ -58,10 +53,6 @@ Also, before installing, be sure to [read Ben's gently-worded note](#heed-this-c
 
 You need to have [XCode](https://developer.apple.com/downloads/index.action?=xcode) or, at the very minimum, the [XCode Command Line Tools](https://developer.apple.com/downloads/index.action?=command%20line%20tools), which are available as a much smaller download.
 
-The easiest way to install the XCode Command Line Tools in OSX 10.9+ is to open up a terminal, type `xcode-select --install` and [follow the prompts](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/).
-
-_Tested in OSX 10.10_
-
 ### Heed this critically important warning before you install
 
 **If you're not me, please _do not_ install dotfiles directly from this repo!**
@@ -82,13 +73,6 @@ There's a lot of stuff that requires admin access via `sudo`, so be warned that 
 
 ## Aliases and Functions
 To keep things easy, add your aliases, functions, settings, etc into one of the files in the `source` subdirectory, or add a new file. They're all automatically sourced when a new shell is opened. Take a look, I have [a lot of aliases and functions](source).
-
-## Scripts
-In addition to the aforementioned [dotfiles][dotfiles] script, there are a few other [bin scripts](bin).
-
-* [dotfiles][dotfiles] - (re)initialize dotfiles. It might ask for your password (for `sudo`).
-* [src](link/.zshrc#L63-71) - (re)source all files in `/source` directory
-* Look through the [bin](bin) subdirectory for a few more.
 
 ## Inspiration
 <https://github.com/gf3/dotfiles>  
